@@ -21,7 +21,7 @@ public class BaseTest {
     @BeforeClass
     public void setup(){
         options = new ChromeOptions();
-        options.addArguments("--headless=new"); // ou juste "--headless" selon version
+        options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
