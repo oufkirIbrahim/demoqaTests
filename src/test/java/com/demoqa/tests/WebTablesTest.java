@@ -44,7 +44,7 @@ public class WebTablesTest extends BaseTest {
         webTablesPage.clickEditButton(email);
 
         String age = webTablesPage.getAge(email);
-        Assert.assertEquals(age, newAge, "Age was not modified correctly");
+        Assert.assertEquals(age, newAge + 1, "Age was not modified correctly");
         ExtentReportManager.getTest().pass("Age modified successfully to: " + age);
     }
 
