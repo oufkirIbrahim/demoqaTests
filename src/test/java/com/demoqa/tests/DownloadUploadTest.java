@@ -34,10 +34,18 @@ public class DownloadUploadTest extends BaseTest {
         chromePrefs.put("download.default_directory", downloadPath);
         options.setExperimentalOption("prefs", chromePrefs);
 
+        // ✅ Add unique user-data-dir to avoid session conflicts
+        String uniqueProfilePath = System.getProperty("java.io.tmpdir") + "/chrome-profile-" + System.currentTimeMillis();
+        options.addArguments("--user-data-dir=" + uniqueProfilePath);
+
+        // ✅ Optional: use headless mode in CI environments
+        options.addArguments("--headless=new"); // Use `--headless=new` for modern versions
+
         // Initialize driver with options
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
     }
+
 
     @Test
     public void testDownloadFile() {
